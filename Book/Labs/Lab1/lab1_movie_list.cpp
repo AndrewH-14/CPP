@@ -5,7 +5,7 @@
 
 using namespace std;
 
-// A structure to store a movies title and year
+// A structure to store a movie's title and year
 struct Movie
 {
     string title = "";
@@ -25,7 +25,7 @@ void get_title(Movie& movie)
 }
 
 /**
- * Function that prompts the user for the movies release year, and stores
+ * Function that prompts the user for the movie's release year, and stores
  * it in the Movie struct. If the release year is invalid, the function
  * will prompt the user to enter a new year until a valid one is entered.
  *
@@ -40,14 +40,14 @@ void get_year(Movie& movie)
     {
         cout << "Year: ";
 
-        if (!(cin  >> release_year))  // User entered wrong data type.
+        if (!(cin >> release_year))  // User entered wrong data type.
         {
             cin.clear();
             cin.ignore(100, '\n');
 
             cout << "Please enter an integer!\n";
         }
-        else if (1888 > release_year) // User entered invalid integer.
+        else if (1888 > release_year) // First movie came out in 1888
         {
             cout << "Please enter a valid year!\n";
         }
@@ -63,7 +63,7 @@ void get_year(Movie& movie)
  * Function that iterates through the movies vector and displays each movies
  * title and release year.
  *
- * @param[in] movies A reference to the Movie struct vector.
+ * @param[in] movies A constant reference to the Movie struct vector.
  */
 void display_movies(const vector<Movie>& movies)
 {
@@ -93,21 +93,21 @@ void display_movies(const vector<Movie>& movies)
 int main(void)
 {
     cout << "The Movie List Program" << endl << endl;
-    cout << "Enter a movie"          << endl << endl;
+    cout << "Enter a movie..."          << endl << endl;
 
     vector<Movie> movies;
 
     char user_choice = 'y';
 
-    // Run loop until the user enters a non 'y' letter
+    // Run loop until the user enters a non 'y' character
     while (tolower(user_choice) == 'y')
     {
         Movie movie;
 
-        // Prompts user for the movies title
+        // Prompts user for the movie's title
         get_title(movie);
 
-        // Prompts user for the movies release year
+        // Prompts user for the movie's release year
         get_year(movie);
 
         // Add a movie to the back of the vector
