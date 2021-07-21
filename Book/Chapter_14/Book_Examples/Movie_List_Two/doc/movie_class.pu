@@ -1,0 +1,20 @@
+@startuml Movie_class
+!theme spacelab
+class Movie
+{
+    -title: string
+    -year:  integer
+    -stars: integer
+    -to_upper()
+
+    +Movie(title, year, stars)
+    +set_title(title)
+    +get_title()
+    +set_year(year)
+    +get_year()
+    +set_stars(stars)
+    +get_stars()
+    +iequals(movie)
+}
+
+@enduml

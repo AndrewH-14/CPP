@@ -1,0 +1,15 @@
+@startuml example
+
+start
+
+partition main
+
+if (something) then (yes)
+    :return true;
+else (no)
+    :return false;
+endif
+
+end
+
+@enduml
