@@ -654,3 +654,23 @@ int*& ref = p;       // a reference to p
 cout << p   << endl; // displays the address of 1
 cout << ref << endl; // also displays the address of i
 ```
+
+**Examples that use the const keyword with pointers**
+```C++
+double price    = 5.99;  // a double
+const double pi = 3.14;  // a constant double
+
+double* const p1 = &price;    // a constant pointer to a double
+const double* p2 = &pi;       // a pointer to a constant double
+const double* const p3 = &pi; // a constant pointer to a constant double
+```
+
+**Examples that use compound types**
+```C++
+const int ci = 2000;         // a constant int
+const int * p4 = &ci;        // a pointer to a constant int
+const int*& r1 = p4;         // a reference to a pointer to a constant int
+int* const p5 = &i;          // a constant pointer to an int
+const int* const p6 = &ci;   // a constant pointer to a constant int
+const int* const & r2 = p6;  // a reference to a constant pointer to a constant int
+```
