@@ -40,7 +40,7 @@ bool get_year(Movie& movie)
 {
     int release_year = 0;
 
-    // Loop until a valid release year is entered.
+    // Loop until a valid release year data type is entered.
     while(true)
     {
         cout << "Year: ";
@@ -52,7 +52,7 @@ bool get_year(Movie& movie)
 
             cout << "Please enter an integer!\n";
         }
-        else // User entered a valid release year.
+        else // User entered a valid data type.
         {
             try
             {
@@ -69,6 +69,36 @@ bool get_year(Movie& movie)
             // A valid integer was entered
             return true;
         }
+    }
+}
+
+/**
+ * Adds the Movie object to the vector if it is not already there.
+ *
+ * @param[in, out] movies A reference to the vector of Movie objects.
+ *
+ * @param[in] movie A reference to a Movie object to be added to the vector.
+ */
+void add_movie(vector<Movie>& movies, const Movie& movie)
+{
+    bool b_add_movie = true;
+
+    // Iterate through the movie vector to see if the move already
+    // exists.
+    for (Movie m : movies)
+    {
+        if(m.equals(movie)) // Movie already exists in the vector
+        {
+            cout << "Movie already in list!" << endl;
+            b_add_movie = false;
+            break;
+        }
+    }
+
+    // If the movie does not already exist in the vector then add it
+    if (b_add_movie)
+    {
+        movies.push_back(movie);
     }
 }
 
@@ -128,8 +158,8 @@ int main(void)
             return 0;
         }
 
-        // Add a movie to the back of the vector
-        movies.push_back(movie);
+        // If the movie does not already exist in the vector then add it
+        add_movie(movies, movie);
 
         // Ask user if they would like to continue
         cout << "\nEnter another movie? (y/n): ";

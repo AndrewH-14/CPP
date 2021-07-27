@@ -35,7 +35,7 @@ string Movie::get_title() const
 }
 
 /**
- * Gets the Movie object;t title in all caps.
+ * Gets the Movie object's title in all caps.
  *
  * @return title_upper The Movie's title in all caps.
  */

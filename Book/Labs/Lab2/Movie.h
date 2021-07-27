@@ -28,5 +28,4 @@ class Movie
         string to_str();
 };
 
-
 #endif // HANKINS_MOVIE_H

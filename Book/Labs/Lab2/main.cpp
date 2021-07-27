@@ -1,17 +1,17 @@
+#include "Movie.h"
+
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <vector>
 
-#include "Movie.h"
-
 using namespace std;
 
 /**
  * Function that prompts the user for the movies title, and stores it in
- * the Movie struct.
+ * the Movie object.
  *
- * @param[in] movies A reference to the Movie struct vector.
+ * @param[in] movies A reference to the Movie object vector.
  */
 void get_title(Movie& movie)
 {
@@ -25,10 +25,10 @@ void get_title(Movie& movie)
 
 /**
  * Function that prompts the user for the movie's release year, and stores
- * it in the Movie struct. If the release year is invalid, the function
+ * it in the Movie object. If the release year is invalid, the function
  * will prompt the user to enter a new year until a valid one is entered.
  *
- * @param[in] movie A reference to a Movie struct.
+ * @param[in] movie A reference to a Movie object.
  */
 void get_year(Movie& movie)
 {
@@ -59,10 +59,40 @@ void get_year(Movie& movie)
 }
 
 /**
+ * Adds the Movie object to the vector if it is not already there.
+ *
+ * @param[in, out] movies A reference to the vector of Movie objects.
+ *
+ * @param[in] movie A reference to a Movie object to be added to the vector.
+ */
+void add_movie(vector<Movie>& movies, const Movie& movie)
+{
+    bool b_add_movie = true;
+
+    // Iterate through the movie vector to see if the move already
+    // exists.
+    for (Movie m : movies)
+    {
+        if(m.equals(movie)) // Movie already exists in the vector
+        {
+            cout << "Movie already in list!" << endl;
+            b_add_movie = false;
+            break;
+        }
+    }
+
+    // If the movie does not already exist in the vector then add it
+    if (b_add_movie)
+    {
+        movies.push_back(movie);
+    }
+}
+
+/**
  * Function that iterates through the movies vector and displays each movies
  * title and release year.
  *
- * @param[in] movies A constant reference to the Movie struct vector.
+ * @param[in] movies A constant reference to the Movie object vector.
  */
 void display_movies(const vector<Movie>& movies)
 {
@@ -110,8 +140,8 @@ int main(void)
         // Prompts user for the movie's release year
         get_year(movie);
 
-        // Add a movie to the back of the vector
-        movies.push_back(movie);
+        // Add the movie to the back of the vector if it is new
+        add_movie(movies, movie);
 
         // Ask user if they would like to continue
         cout << "\nEnter another movie? (y/n): ";
